@@ -15,24 +15,41 @@ The questions from your notes today are below, please copy your answers them her
 
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
-```{R}
-
-
+```{r}
+conversion <- function(fahrenheit) {
+  conversion_temp <- (fahrenheit - 32) *5/9
+  return(conversion_temp)
+}
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
-
-
+conversionboth <- function(fahrenheit, feet) {
+  conversion_temp <- (fahrenheit - 32) *5/9
+  conversion_temp
+  
+  conversion_dist <- feet * 0.304
+  conversion_dist
+  
+  return(c(conversion_temp, conversion_dist))
+}
 ```
 
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
-```{R}
-
+```{r}
+number <- 7
+if (number > 0){
+  print("The input number is positive!")
+} else if (number == 0){
+  print("The input number is 0")
+} else {
+  print("The input number is negative!")
+}
+  
 
 ```
 
@@ -40,25 +57,31 @@ The questions from your notes today are below, please copy your answers them her
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-
-
+number_abs <- function(input_number){
+  if (input_number < 0){
+    return(input_number * -1)
+  } else {
+    return(input_number)
+  }
+}
+number_abs(-9)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
-
-
+myfunction <- function(x){
+  if (is.character(x)){
+    print("Please input a numerical value to this function!")
+    return(NULL)
+  } else if (x < 0){
+    print("Your input number is negative, this is the absolute value: ")
+    return(x * -1)
+  } else {
+    return(x)
+  }
+}
+myfunction("hello")
+myfunction(-7)
 ```
-   
-   
-
-
-
-
-
-
-```
-
